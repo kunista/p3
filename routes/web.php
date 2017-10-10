@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SchoolController@index');
+Route::get('/search', 'SchoolController@search');
+
