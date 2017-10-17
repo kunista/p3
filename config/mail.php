@@ -1,7 +1,8 @@
 <?php
 
 return [
-
+    'supportEmail' => 'help@p3.kunista.me',
+    'systemEmail' => 'p3@gmail.com',
     /*
     |--------------------------------------------------------------------------
     | Mail Driver
