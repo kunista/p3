@@ -11,7 +11,7 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        return 'Show form to collect info from user...';
+        return view('school.index');
     }
 
     /**
@@ -19,7 +19,6 @@ class SchoolController extends Controller
      */
     public function search()
     {
-        return 'At this step we would search for schools...';
-        # redirect...
+        return view('school.search');
     }
 }
