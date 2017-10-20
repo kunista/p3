@@ -22,9 +22,9 @@
         <fieldset class='checkboxes'>
             <label>Select school type:</label>
             <br>
-            <label><input type='checkbox' name='schoolTypes[]' value='Catholic'> Catholic</label>
-            <label><input type='checkbox' name='schoolTypes[]' value='Public'> Public</label>
-            <label><input type='checkbox' name='schoolTypes[]' value='Private'> Private</label>
+            <label><input type='checkbox' name='schoolTypes[]' value='Catholic' {{ (old('schoolTypes') and in_array('Catholic', old('schoolTypes'))) ? 'checked' : ''}}> Catholic</label>
+            <label><input type='checkbox' name='schoolTypes[]' value='Public' {{ (old('schoolTypes') and in_array('Public', old('schoolTypes'))) ? 'checked' : ''}}> Public</label>
+            <label><input type='checkbox' name='schoolTypes[]' value='Private' {{ (old('schoolTypes') and in_array('Private', old('schoolTypes'))) ? 'checked' : ''}}> Private</label>
             @include('modules.error-field', ['fieldName' => 'schoolTypes'])
         </fieldset>
 
