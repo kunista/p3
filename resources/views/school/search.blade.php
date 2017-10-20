@@ -8,12 +8,14 @@
 @section('content')
     <h1>School Match Tool</h1>
 
-    <form>
+    <form method='POST' action='/school'>
 
+        {{ csrf_field() }}
 
         <div class='form-group'>
             <label for='grade'>Select Grade (required):</label>
-            <input type='number' name='grade' min="1" max="12" id='grade'>
+            <input type='text' name='grade' id='grade' value='{{ old('grade') }}'>
+            @include('modules.error-field', ['fieldName' => 'grade'])
             <br></br>
         </div>
 
@@ -23,6 +25,7 @@
             <label><input type='checkbox' name='schoolTypes[]' value='Catholic'> Catholic</label>
             <label><input type='checkbox' name='schoolTypes[]' value='Public'> Public</label>
             <label><input type='checkbox' name='schoolTypes[]' value='Private'> Private</label>
+            @include('modules.error-field', ['fieldName' => 'schoolTypes'])
         </fieldset>
 
         <label for='neighborhood'>Select neighborhood</label>

@@ -13,6 +13,7 @@
 
 Route::get('/', 'SchoolController@index');
 Route::get('/search', 'SchoolController@search');
+Route::post('/school', 'SchoolController@store');
 
 Route::get('/env', function () {
     dump(config('app.name'));
