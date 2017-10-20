@@ -15,7 +15,7 @@ class SchoolController extends Controller
     }
 
     /**
-     * GET /school{$title}
+     * SEARCH /school
      */
     public function search()
     {
