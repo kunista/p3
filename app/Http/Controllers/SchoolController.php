@@ -49,7 +49,7 @@ class SchoolController extends Controller
                 $searchResults[$name] = $school;
             }
         }
-        return (redirect('/search')->with([
+        return (redirect('/')->with([
             'grade' => $grade,
             'schoolTypes' => $schoolTypes,
             'neighborhood' => $neighborhood,

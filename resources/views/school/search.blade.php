@@ -19,7 +19,7 @@
         </div>
 
         <fieldset class='checkboxes'>
-            <label>Select school type:</label>
+            <label>Select school type (required):</label>
             <br>
             <label><input type='checkbox' name='schoolTypes[]' value='Catholic' {{ (old('schoolTypes') and in_array('Catholic', old('schoolTypes'))) ? 'checked' : ''}}> Catholic</label>
             <label><input type='checkbox' name='schoolTypes[]' value='Public' {{ (old('schoolTypes') and in_array('Public', old('schoolTypes'))) ? 'checked' : ''}}> Public</label>
@@ -27,7 +27,7 @@
             @include('modules.error-field', ['fieldName' => 'schoolTypes'])
         </fieldset>
 
-        <label for='neighborhood'>Select neighborhood</label>
+        <label for='neighborhood'>Select neighborhood (required):</label>
         <select name='neighborhood' id='neighborhood'>
             <option value=''>Choose one...</option>
             <option value='East Boston' {{ (old('neighborhood')=='East Boston') ? 'SELECTED' : ''}} >East Boston</option>

@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/', 'SchoolController@index');
-Route::get('/search', 'SchoolController@search');
+Route::get('/', 'SchoolController@search');
 Route::post('/school', 'SchoolController@store');
 
 Route::get('/env', function () {
