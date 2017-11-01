@@ -16,7 +16,6 @@
             <label for='grade'>Select Grade (required):</label>
             <input type='text' name='grade' id='grade' value='{{ old('grade') }}'>
             @include('modules.error-field', ['fieldName' => 'grade'])
-            <br></br>
         </div>
 
         <fieldset class='checkboxes'>
