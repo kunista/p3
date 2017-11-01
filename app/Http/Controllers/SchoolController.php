@@ -21,7 +21,10 @@ class SchoolController extends Controller
     {
 
         return view('school.search')->with([
-            'grade' => session('grade')
+            'grade' => session('grade'),
+            'schoolTypes' => session('schoolTypes'),
+            'neighborhood' => session('neighborhood'),
+            'searchResults' => session('searchResults')
         ]);
     }
 
@@ -30,22 +33,27 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        // $messages = [
-        //     'required' => 'Don\'t forget the :attribute field',
-        // ];
-        #dd($request->all());
         $this->validate($request, [
             'grade' => 'required|numeric|min:0|max:13',
-            'schoolTypes' => 'required'
-
+            'neighborhood' => 'required',
+            'schoolTypes' => 'required',
         ]);
-
         $grade = $request->input('grade');
-        #$schoolTypes = $request->input('schoolTypes');
-
-        #return redirect('/book/'.$title);
+        $schoolTypes = $request->input('schoolTypes');
+        $neighborhood = $request->input('neighborhood');
+        $searchResults = [];
+        $schoolsRawData = file_get_contents(database_path('/schools.json'));
+        $schools = json_decode($schoolsRawData, true);
+        foreach ($schools as $name => $school) {
+            if ((($school['gradeFloor']<=$grade) AND ($school['gradeCeiling']>=$grade)) AND (in_array($school['type'],$schoolTypes)) AND ($school['neighborhood'] == $neighborhood)) {
+                $searchResults[$name] = $school;
+            }
+        }
         return (redirect('/search')->with([
-            'grade' => $grade
+            'grade' => $grade,
+            'schoolTypes' => $schoolTypes,
+            'neighborhood' => $neighborhood,
+            'searchResults' => $searchResults
         ]))->withInput();
     }
 }
